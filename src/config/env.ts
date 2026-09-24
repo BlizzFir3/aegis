@@ -10,7 +10,6 @@ const envSchema = z.object({
   REDIS_PORT: z.coerce.number().default(6379),
   REDIS_PASSWORD: z.string(),
 
-  // Configuration Spécifique Groq
   UPSTREAM_API_URL: z.string().url().default('https://api.groq.com/openai/v1'),
   GROQ_API_KEY: z.string().min(1, 'La clé API Groq est requise'),
   TARGET_MODEL: z.string().default('openai/gpt-oss-20b'),

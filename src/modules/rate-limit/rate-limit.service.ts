@@ -11,9 +11,6 @@ export class RateLimitService {
       timeWindow: '1 minute',
       redis: redisInstance,
 
-      // Comportement de blocage
-      // allowList: ['127.0.0.1'], // Utile si tu veux bypasser la limite pour tes propres scripts internes
-
       errorResponseBuilder: (request, context) => {
         return {
           statusCode: 429,
