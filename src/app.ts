@@ -1,6 +1,7 @@
 import fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
 import { env } from './config/env';
+import { ProxyService } from './modules/proxy/proxy.service';
 
 // Factory function pour créer l'instance de l'app (facilite les tests unitaires plus tard)
 export const buildApp = async (): Promise<FastifyInstance> => {
@@ -15,6 +16,8 @@ export const buildApp = async (): Promise<FastifyInstance> => {
   app.get('/health', async () => {
     return { status: 'ok', uptime: process.uptime() };
   });
+
+  await ProxyService.register(app, '/v1');
 
   return app;
 };
